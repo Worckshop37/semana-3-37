@@ -17,40 +17,34 @@ exports.signin = async(req, res, next) => {
                 }
                 );
                 res.status(200).send({
-                    auth: true,
                     tokenReturn: token,
-                    user: user
                 })
             }else{
-                res.status(401).json({
-                    error: 'Error en el usuario o contraseña'
-                })
+                res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" })
             }
         }else{
-            res.status(404).json({
-                error: 'Error en el usuario o contraseña'
-            })
+            res.status(404).send('User Not Found.')
         }
     } catch (error) {
         res.status(500).send({
-            message: 'Error->'
+            message: 'Error'
         })
         next(error);
     }
 };
 
-exports.createuser = async(req, res, next) => {
-    try {
+// exports.createuser = async(req, res, next) => {
+//     try {
         
-    } catch (error) {
+//     } catch (error) {
         
-    }
-};
+//     }
+// };
 
-exports.listar = async(req, res, next) => {
-    try {
+// exports.listar = async(req, res, next) => {
+//     try {
         
-    } catch (error) {
+//     } catch (error) {
         
-    }
-};
+//     }
+// };
