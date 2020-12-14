@@ -33,18 +33,18 @@ exports.signin = async(req, res, next) => {
     }
 };
 
-exports.createuser = async(req, res, next) => {
-    try {
+// exports.createuser = async(req, res, next) => {
+//     try {
         
-    } catch (error) {
+//     } catch (error) {
         
-    }
-};
+//     }
+// };
 
-exports.listar = async(req, res, next) => {
-    try {
+// exports.listar = async(req, res, next) => {
+//     try {
         
-    } catch (error) {
+//     } catch (error) {
         
-    }
-};
+//     }
+// };
