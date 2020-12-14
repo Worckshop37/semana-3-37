@@ -10,14 +10,13 @@ exports.signin = async(req, res, next) => {
             if(passwordInvalid){
                 const token = jwt.sign({
                     id: user.id,
-                    name: user.name,
-                    rol: user.rol
+                    name: user.name
                 },'config.secret', {
-                    expiresIn: 3600,
+                    expiresIn: 14400,
                 }
                 );
                 res.status(200).send({
-                    tokenReturn: token,
+                    tokenReturn: token
                 })
             }else{
                 res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" })
@@ -33,9 +32,10 @@ exports.signin = async(req, res, next) => {
     }
 };
 
-// exports.createuser = async(req, res, next) => {
+// exports.createUser = async(req, res, next) => {
 //     try {
-        
+//         const newUser = await bcrypt.hash(req.body.password, 10);
+
 //     } catch (error) {
         
 //     }

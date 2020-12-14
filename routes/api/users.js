@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const models = require('../../models');
-const MiController = require('../../controllers/MiController.js');
-var bcrypt = require('bcryptjs');
+const miController = require('../../controllers/MiController.js');
+const bcrypt = require('bcryptjs');
 
 //api/user
 router.get('/', async(req, res) => {
@@ -10,13 +10,15 @@ router.get('/', async(req, res) => {
 });
 
 //api/user/create(registrar usuario)
-router.post('/createuser', async(req, res) => {
-    req.body.password = await bcrypt.hash(req.body.password, 10);
+
+router.post('/createUser', async(req, res) => {
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
     const user = await models.user.create(req.body);
     res.status(200).json(user);
 })
 
 //api/user/login
-router.post('/signin', MiController.signin);
+// router.post('/createUser', miController.createUser);
+router.post('/signin', miController.signin);
 
 module.exports = router;
